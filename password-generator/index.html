@@ -4,32 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrZY | Password Generator</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
   <div class="container">
     <h1>Password Generator</h1>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col m4">
         <label for="length-slider">Password Length</label>
+        <span id="length-slider-value">8</span>
         <input type="range" id="length-slider" min=6 max=48 value=8 step=1>
       </div>
-      <div class="col-md-8">
+      <div class="col m8">
         <input type="text" id="password" placeholder="password appears here">
+        <div>
+          <label class="input-values">
+            <input type="checkbox" id="symbols" checked="true">
+            <span>Symbols</span>
+          </label>
+          <label class="input-values">
+            <input type="checkbox" id="numbers" checked="true">
+            <span>Numbers</span>
+          </label>
+          <label class="input-values">
+            <input type="checkbox" id="lowercase" checked="true">
+            <span>Lower Case</span>
+          </label>
+          <label class="input-values">
+            <input type="checkbox" id="uppercase" checked="true">  
+            <span>Upper Case</span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m12">
+          <label for="generate-password"></label>
+          <button class="waves-effect waves-dark btn-small" id="generate-password">Generate</button>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <label for="generate-password"></label>
-        <button class="btn btn-success" id="generate-password">Generate</button>
-      </div>
-    </div>
-
   </div>
 <script src="./js/script.js"></script>
 </body>
