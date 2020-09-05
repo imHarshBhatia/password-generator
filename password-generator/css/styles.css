@@ -1,3 +1,9 @@
 .input-values {
     display: block;
 }
+
+.iframe {
+    width: 600px;
+    height: 600px;
+    border: none;
+}

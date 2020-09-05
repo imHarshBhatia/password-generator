@@ -13,10 +13,12 @@ const symbolsCheckBox = document.querySelector('#symbols');
 const numbersCheckBox = document.querySelector('#numbers');
 const lowerCaseCheckBox = document.querySelector('#lowercase');
 const upperCaseCheckBox = document.querySelector('#uppercase');
+const copyPassword = document.querySelector('#copy-password');
 
 // event listeners
 generatePasswordBtn.addEventListener('click', generatePassowrd);
-lengthSlider.addEventListener('input', showPasswordLength)
+lengthSlider.addEventListener('input', showPasswordLength);
+copyPassword.addEventListener('click', copyPasswordToClipBoard);
 
 
 //logic functions
@@ -31,7 +33,7 @@ function generatePassowrd() {
   [password, passwordChars] = [passwordAndChars.password, passwordAndChars.passwordChars];
   console.log(`Password is: ${password}`);
   console.log(`password chars are ${passwordChars}`);
-  if (!passwordAndChars) {
+  if (!passwordChars) {
     window.alert('A single type of character needs to be selected for password to be genrated');
     return;
   }
@@ -87,4 +89,12 @@ function createPwdAndChars() {
     passwordChars += lowerCase;
   }
   return {password, passwordChars};
+}
+
+function copyPasswordToClipBoard() {
+  console.log('Called copy');
+  passwordTextBox.select();
+  passwordTextBox.setSelectionRange(0, 99999);
+  document.execCommand('copy');
+  document.getSelection().removeAllRanges();
 }

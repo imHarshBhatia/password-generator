@@ -6,6 +6,7 @@
   <title>TrZY | Password Generator</title>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -20,7 +21,11 @@
         <input type="range" id="length-slider" min=6 max=48 value=8 step=1>
       </div>
       <div class="col m8">
+        <!-- <label for="password">Passowrd</label> -->
         <input type="text" id="password" placeholder="password appears here">
+        <button class="material-icons" id="copy-password">
+          content_copy
+        </button>
         <div>
           <label class="input-values">
             <input type="checkbox" id="symbols" checked="true">
@@ -49,5 +54,8 @@
     </div>
   </div>
 <script src="./js/script.js"></script>
+
+<!-- <iframe src="http://www.passwordmeter.com" class="iframe" id="password-meter" title="hsimp"></iframe>
+<iframe src="https://thycotic.com/resources/password-strength-checker/" class="iframe" title="hsimp"></iframe> -->
 </body>
 </html>
