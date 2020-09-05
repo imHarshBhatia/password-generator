@@ -18,37 +18,73 @@ const upperCaseCheckBox = document.querySelector('#uppercase');
 generatePasswordBtn.addEventListener('click', generatePassowrd);
 lengthSlider.addEventListener('input', showPasswordLength)
 
+
+//logic functions
 function showPasswordLength() {
   passwordLengthValue.innerHTML = lengthSlider.value;
 }
 
 function generatePassowrd() {
-  let passwordChars = createPasswordChars();
-  if (!passwordChars) {
+  let count = 0;
+  let passwordAndChars = createPwdAndChars();
+  let password, passwordChars;
+  [password, passwordChars] = [passwordAndChars.password, passwordAndChars.passwordChars];
+  console.log(`Password is: ${password}`);
+  console.log(`password chars are ${passwordChars}`);
+  if (!passwordAndChars) {
     window.alert('A single type of character needs to be selected for password to be genrated');
     return;
   }
   const passwordCharsLength = passwordChars.length-1;
-  let password = '';
-  for (let i = 0; i < lengthSlider.value; i++) {
-      password += passwordChars[Math.ceil(Math.random() * passwordCharsLength)];
+  const generatePasswordLength = lengthSlider.value - password.length;
+  const noRepetitiveChars = lengthSlider.value < passwordChars.length;
+  for (let i = 0; i < generatePasswordLength; i++) {
+    console.log(`Iteration: ${++count}`);
+    console.log(`Inside for loop, password is: ${password}`);
+    const generatedPasswordChar = passwordChars[Math.ceil(Math.random() * passwordCharsLength)];
+    console.log(`Generated password char is: ${generatedPasswordChar}`);
+    if (noRepetitiveChars) {
+      if (password.includes(generatedPasswordChar)) {
+        console.log('Repetitive chars found');
+        i--;
+        continue;
+      }
+    }
+    console.log(`sliced char: ${password.slice(-1)}`);
+    if (password.slice(-1) === generatedPasswordChar) {
+      i--;
+      console.log('Not executing as two chars are same');
+      continue;
+    }
+    password += generatedPasswordChar;
+    console.log(`Password after iteration is: ${password}`);
   }
   passwordTextBox.value = password;
 }
 
-function createPasswordChars() {
+function createPwdAndChars() {
+  var password = '';
   let passwordChars = '';
+
+  let addPasswordChar = function(characterList) {
+    return characterList[Math.floor(Math.random() * characterList.length)];
+  }
+
   if (symbolsCheckBox.checked) {
+    password += addPasswordChar(symbols);
     passwordChars += symbols;
   }
+  if (upperCaseCheckBox.checked) {
+    password += addPasswordChar(upperCase);
+    passwordChars += upperCase;
+  }
   if (numbersCheckBox.checked) {
+    password += addPasswordChar(numbers);
     passwordChars += numbers;
   }
   if (lowerCaseCheckBox.checked) {
+    password += addPasswordChar(lowerCase);
     passwordChars += lowerCase;
   }
-  if (upperCaseCheckBox.checked) {
-    passwordChars += upperCase;
-  }
-  return passwordChars;
+  return {password, passwordChars};
 }
