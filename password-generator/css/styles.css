@@ -1,9 +1,13 @@
 .input-values {
-    display: block;
+  display: block;
 }
 
 .iframe {
-    width: 600px;
-    height: 600px;
-    border: none;
+  width: 600px;
+  height: 600px;
+  border: none;
+}
+
+#generate-password i {
+  transition: transform 0.5s;
 }

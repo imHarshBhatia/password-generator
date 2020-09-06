@@ -3,6 +3,7 @@ const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
 const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const symbols = '~!@#$%^&*()_+=-~,./?\'";:[]{}\|'
 var checkedBoxes = 1;
+var rotationDegrees = 0;
 
 // elements
 const generatePasswordBtn = document.querySelector('#generate-password');
@@ -19,14 +20,23 @@ const copyPassword = document.querySelector('#copy-password');
 generatePasswordBtn.addEventListener('click', generatePassowrd);
 lengthSlider.addEventListener('input', showPasswordLength);
 copyPassword.addEventListener('click', copyPasswordToClipBoard);
-
+passwordTextBox.addEventListener('keyup', disablePwdCopy);
 
 //logic functions
+function disablePwdCopy() {
+  !passwordTextBox.value ? copyPassword.setAttribute('disabled', true) : copyPassword.removeAttribute('disabled');
+}
+
+disablePwdCopy();
+
 function showPasswordLength() {
   passwordLengthValue.innerHTML = lengthSlider.value;
 }
 
 function generatePassowrd() {
+  setTimeout(() => {
+    rotateIcon(180);
+  }, 0);
   let count = 0;
   let passwordAndChars = createPwdAndChars();
   let password, passwordChars;
@@ -62,6 +72,7 @@ function generatePassowrd() {
     console.log(`Password after iteration is: ${password}`);
   }
   passwordTextBox.value = password;
+  disablePwdCopy();
 }
 
 function createPwdAndChars() {
@@ -97,4 +108,11 @@ function copyPasswordToClipBoard() {
   passwordTextBox.setSelectionRange(0, 99999);
   document.execCommand('copy');
   document.getSelection().removeAllRanges();
+}
+
+
+
+function rotateIcon(angle) {
+  rotationDegrees += angle;
+  $('#generate-password i').css('transform', 'rotate(' + rotationDegrees + 'deg)');
 }
