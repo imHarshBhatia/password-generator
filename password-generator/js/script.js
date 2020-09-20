@@ -108,6 +108,7 @@ function copyPasswordToClipBoard() {
   passwordTextBox.setSelectionRange(0, 99999);
   document.execCommand('copy');
   document.getSelection().removeAllRanges();
+  M.toast({html: 'Password copied to clipboard'});
 }
 
 

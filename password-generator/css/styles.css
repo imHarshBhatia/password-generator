@@ -1,3 +1,36 @@
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container>h1 {
+  font-family: 'Coda', cursive;
+  color: #fff;
+  text-align: center;
+}
+
+.app-container {
+  font-size: 16px;
+  max-width: 480px;
+  background-color: #455a64;
+  padding: 20px 10px;
+  margin: 0 20%;
+  border-radius: 10px;
+}
+
 .input-values {
   display: block;
 }
@@ -10,4 +43,26 @@
 
 #generate-password i {
   transition: transform 0.5s;
+}
+
+.action-btn {
+  padding-top: 0.4rem !important;
+}
+
+.action-btn button {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.user-input {
+  margin-bottom: 0 !important;
+}
+
+.choices {
+  padding-left: 1.75rem !important;
+}
+
+#password {
+  color: #fff;
+  font-size: 24px;
 }
